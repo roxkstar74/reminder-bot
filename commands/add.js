@@ -46,7 +46,7 @@ module.exports = {
                     msg: msg
                 };
 
-                if (date <= new Date().getTime()) { channel.send(embeds.error("The time for this reminder has already passed.")); return; }
+                if (reminder.date <= new Date().getTime()) { channel.send(embeds.error("The time for this reminder has already passed.")); return; }
 
                 //update the database {
                 //push it into the array, then sort it by inserting it in place
