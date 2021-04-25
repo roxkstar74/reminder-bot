@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
     _id: { type: String, required: true },
     reminders: { type: Array, required: true },
+    offset: { type: Number, required: true }
 });
 
 //the string represents the actual collection name

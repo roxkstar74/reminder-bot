@@ -5,7 +5,7 @@ module.exports = {
     name: "remove",
     aliases: [],
     title: "`.r remove <id|all>`",
-    description: "Removes an active reminder by its ID as shown in `.r list`, or removes all active reminders.\nReminder IDs are always sorted by time, so if you updated the reminder list, run `.r list` to see the updated IDs.",
+    description: "Removes an active reminder by its ID as shown in `.r list`, or removes all active reminders.",
     run(message, args) {
         const { channel, author } = message;
         if (args[0].toLowerCase() === "all") {

@@ -33,6 +33,11 @@ exports.removeAllReminders = () => {
     return new Discord.MessageEmbed().setColor(green).setTitle("All Reminders Removed Successfully");
 };
 
+exports.updateOffset = (offset) => {
+    return new Discord.MessageEmbed().setColor(green).setTitle("Time Zone Offset Updated Successfully")
+        .setDescription(`Your time zone is now \`${offset}\` hours from UTC.`);
+};
+
 exports.remindersList = (reminders) => {
     const embed = new Discord.MessageEmbed().setColor(blue).setTitle("Reminders List");
     reminders.forEach((reminder, idx) => {
