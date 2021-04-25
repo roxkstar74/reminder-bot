@@ -11,27 +11,26 @@ exports.help = (commands) => {
 };
 
 exports.noReminders = () => {
-    return new Discord.MessageEmbed().setColor(blue).setTitle("Reminders List").setDescription("There are no active reminders.").setFooter("Created by pblpbl#5115");
+    return new Discord.MessageEmbed().setColor(blue).setTitle("Reminders List").setDescription("There are no active reminders.");
 };
 
 exports.error = (msg) => {
-    return new Discord.MessageEmbed().setColor(red).setTitle("Error").setDescription(msg).setFooter("Created by pblpbl#5115");;
+    return new Discord.MessageEmbed().setColor(red).setTitle("Error").setDescription(msg);
 };
 
 exports.addReminder = (reminder) => {
     const embed = new Discord.MessageEmbed().setColor(green).setTitle("Reminder Set Successfully");
     embed.addField("Message", reminder.msg, true);
     embed.addField("Date", reminder.dateStr, true);
-    embed.setFooter("Created by pblpbl#5115");
     return embed;
 };
 
 exports.removeReminder = () => {
-    return new Discord.MessageEmbed().setColor(green).setTitle("Reminder Removed Successfully").setFooter("Created by pblpbl#5115");
+    return new Discord.MessageEmbed().setColor(green).setTitle("Reminder Removed Successfully");
 };
 
 exports.removeAllReminders = () => {
-    return new Discord.MessageEmbed().setColor(green).setTitle("All Reminders Removed Successfully").setFooter("Created by pblpbl#5115");
+    return new Discord.MessageEmbed().setColor(green).setTitle("All Reminders Removed Successfully");
 };
 
 exports.remindersList = (reminders) => {
@@ -41,6 +40,5 @@ exports.remindersList = (reminders) => {
         embed.addField("Date", reminder.dateStr, true);
         embed.addField("ID", idx, true);
     });
-    embed.setFooter("Created by pblpbl#5115");
     return embed;
 };
