@@ -22,7 +22,7 @@ const client = new Discord.Client();
 client.login(process.env.TOKEN);
 client.once("ready", () => {
     console.log("Bot started.");
-    console.log(new Date().toString());
+    console.log(new Date().getTimezoneOffset());
     //this fetch function can get any user without relying on cache
     //client.users.fetch("371785429113896965").then(res => console.log(res));
 });
