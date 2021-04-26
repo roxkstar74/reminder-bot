@@ -1,10 +1,9 @@
+# ReminderBot
 ![Set a reminder for tomorrow so you don't miss this important webinar.](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p1.png)
 
 One day later, out of nowhere:
 
 ![A reminder shows up telling you your important note](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p2.png)
-
-# ReminderBot
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=pblpbl1024.reminder-bot)
 
