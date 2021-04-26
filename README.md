@@ -13,7 +13,7 @@ This is a lightweight Discord bot that allows you to set reminders to ping yours
 [Click here](https://discord.com/api/oauth2/authorize?client_id=834503689452257322&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
 
 ## Usage
-**All interactions take place via direct messages**, so make sure you allow the bot to do so.
+**All interactions take place via direct messages**. When you invite the bot to a server, everyone on the server can start using this bot if their DM settings allow it.
 
 Before you start using the bot, **you must type `.r set <offset>` where `<offset>` is the number of hours your time zone is offset from Coordinated Universal Time.** [Click here](https://www.timeanddate.com/time/map/) to find your time zone.
 
