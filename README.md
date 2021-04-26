@@ -1,6 +1,6 @@
-![Set a reminder for tomorrow so you don't miss this important webinar.](https://github.com/pblpbl1024/reminder-bot/raw/main/p1.png)
+![Set a reminder for tomorrow so you don't miss this important webinar.](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p1.png)
 One day later, when you're in the middle of gaming/doing homework/on your phone:
-![A reminder shows up telling you your important note](https://github.com/pblpbl1024/reminder-bot/raw/main/p2.png)
+![A reminder shows up telling you your important note](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p2.png)
 
 # ReminderBot
 This is a lightweight Discord bot that allows you to set reminders to ping yourself with a direct message at a specified time. Schedule messages easily and manage your reminders by direct messaging the bot with simple commands!
