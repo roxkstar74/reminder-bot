@@ -5,6 +5,9 @@ One day later, out of nowhere:
 ![A reminder shows up telling you your important note](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p2.png)
 
 # ReminderBot
+
+![visitors](https://visitor-badge.glitch.me/badge?page_id=pblpbl1024.reminder-bot)
+
 This is a lightweight Discord bot that allows you to set reminders to ping yourself with a direct message at a specified time. Schedule messages easily and manage your reminders by direct messaging the bot with simple commands!
 
 ## Add ReminderBot to your server
