@@ -24,7 +24,7 @@ To get help for all the commands, type `.r help`. Here's a list of them for conv
  
 * `.r list`
 
-Lists all active reminders with their IDs. Reminders are always sorted by time.
+  Lists all active reminders with their IDs. Reminders are always sorted by time.
 
 * `.r remove <id|all>`
 
@@ -32,7 +32,7 @@ Lists all active reminders with their IDs. Reminders are always sorted by time.
   
 * `.r set <offset>`
 
-Sets your current time zone offset from UTC (in hours). It is strongly recommended that you clear all reminders after changing this offset.
+  Sets your current time zone offset from UTC (in hours). It is strongly recommended that you clear all reminders after changing this offset.
 
 ## Upcoming Features
 * Support for relative time units when creating a reminder
