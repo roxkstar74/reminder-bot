@@ -26,7 +26,7 @@ Lists all active reminders with their IDs. Reminders are always sorted by time.
 
 * `.r remove <id|all>`
 
-  Removes an active reminder by its ID as shown in .r list, or removes all active reminders if you type `.r remove all`.
+  Removes an active reminder by its ID as shown when you type `.r list`, or removes all active reminders if you type `.r remove all`.
   
 * `.r set <offset>`
 Sets your current time zone offset from UTC (in hours). It is strongly recommended that you clear all reminders after changing this offset.
