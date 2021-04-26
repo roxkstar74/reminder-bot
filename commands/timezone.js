@@ -5,7 +5,7 @@ module.exports = {
     name: "set",
     aliases: [],
     title: "`.r set <offset>`",
-    description: "Sets your current time zone offset from UTC (in hours). This command needs to be used before reminders can be added. It is strongly recommended that you clear all reminders after changing this offset",
+    description: "Sets your current time zone offset from UTC (in hours). This command needs to be used before reminders can be added. It is strongly recommended that you clear all reminders after changing this offset.",
     run(message, args) {
         const { channel, author } = message;
         if (args.length !== 1) { channel.send(embeds.error("Invalid number of arguments.")); return; }
