@@ -54,12 +54,14 @@ client.on("message", async message => {
     //handles commands
     const cmd = msg[1], args = msg.slice(2);
     console.log(`${author.username} ran command "${cmd}" with arguments "${args}".`);
+    let found = false;
     for (const command of commands) {
         if (cmd === command.name || command.aliases.includes(cmd)) {
-            command.run(message, args);
+            command.run(message, args); found = true;
             break;
         }
     }
+    if (!found) channel.send(embeds.invalidCommand());
 });
 
 var interval = 60000;

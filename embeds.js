@@ -47,3 +47,9 @@ exports.remindersList = (reminders) => {
     });
     return embed;
 };
+
+exports.invalidCommand = () => {
+    const embed = new Discord.MessageEmbed().setColor(red).setTitle("Invalid Command")
+        .setDescription("Type `.r help` for a list of available commands.");
+    return embed;
+};
