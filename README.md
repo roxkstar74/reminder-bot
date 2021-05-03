@@ -20,7 +20,7 @@ Before you start using the bot, **you must type `.r set <offset>` where `<offset
 To get help for all the commands, type `.r help`. Here's a list of them for convenience:
 * `.r add <hour:minute><am|pm> <month/day/year> <message>`
 
-  Sets a reminder to ping you at a specific time. **Note that the order of `time`, `date`, and `message` does not matter**, but note that `message` cannot contain the character `:` or `/`.
+  Sets a reminder to ping you at a specific time. **The order of `time`, `date`, and `message` does not matter**, but note that `message` cannot contain the character `:` or `/`.
  
 * `.r list`
 
