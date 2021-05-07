@@ -8,7 +8,7 @@ const userSchema = new Schema({
     offset: { type: Number, required: true }
 });
 
-//the string represents the actual collection name
+//the string represents the actual collection names
 const User = mongoose.model("User", userSchema);
 
 module.exports = User;
