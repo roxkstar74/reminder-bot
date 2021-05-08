@@ -67,6 +67,7 @@ client.on("message", async message => {
 var interval = 60000;
 var delay = (60 - new Date().getSeconds()) * 1000;
 var expected = Date.now() + delay;
+var count = 0;
 setTimeout(step, delay);
 function step() {
     var dt = Date.now() - expected; // the drift (positive for overshooting, negative for undershooting)
@@ -77,6 +78,7 @@ function step() {
         //do what is to be done normally
         //console.log(dt);
         //query all users and check if there are any reminders that should go off
+        count++; if (count % 60 == 0) console.log("hi");
         const now = new Date();
         userSchema.find().then(userList => {
             //loop through all user entries
