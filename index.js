@@ -81,20 +81,23 @@ function step() {
         userSchema.find().then(userList => {
             //loop through all user entries
             for (const user of userList) {
-                console.log(user);
+                //console.log(user);
                 for (let i = 0; i < user.reminders.length; i++) {
                     if (user.reminders[i].date <= now.getTime()) {
                         //ping the user with the reminder, delete this reminder, and update the index
                         //since this function is asynchronous, store the message in a variable
                         let m = user.reminders[i].msg;
-                        client.users.fetch(user._id).then(u => u.send(`<@${u.id}> ${m}`));
+                        client.users.fetch(user._id).then(u => {
+                            u.send(`<@${u.id}> ${m}`);
+                            console.log(u.username + " was sent the reminder \"" + m + "\"");
+                        });
                         user.reminders.splice(i, 1); i--;
                     }
                 }
                 user.save();
             }
         });
-        console.log(new Date().getTime());
+        //console.log(new Date().getTime());
         expected += interval;
         setTimeout(step, Math.max(0, interval - dt));
     }
