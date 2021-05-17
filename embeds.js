@@ -40,16 +40,11 @@ exports.updateOffset = (offset) => {
 
 exports.remindersList = (reminders) => {
     const embed = new Discord.MessageEmbed().setColor(blue).setTitle("Reminders List");
-    reminders.forEach((reminder, idx) => {
-        embed.addField("Message", `${reminder.msg}`, true);
+    if(reminders.length === 0) embed.setDescription("There are no active reminders.");
+    else reminders.forEach((reminder, idx) => {
         embed.addField("Date", reminder.dateStr, true);
+        embed.addField("Message", `${reminder.msg}`, true);
         embed.addField("ID", idx, true);
     });
-    return embed;
-};
-
-exports.invalidCommand = () => {
-    const embed = new Discord.MessageEmbed().setColor(red).setTitle("Invalid Command")
-        .setDescription("Type `.r help` for a list of available commands.");
     return embed;
 };

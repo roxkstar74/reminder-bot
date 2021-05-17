@@ -2,18 +2,18 @@ const userSchema = require("../models/user");
 const embeds = require("../embeds");
 
 module.exports = {
-    name: "list",
-    aliases: [],
-    title: "`.r list`",
-    description: "Lists all active reminders with their IDs.",
-    run(message, args) {
-        const { channel, author } = message;
-        userSchema.findById(author.id).then(user => {
-            if (!user) {
-                channel.send(embeds.noReminders());
+    data: {
+        name: "list",
+        description: "Lists all active reminders."
+    },
+    run(interaction) {
+        const {options, user} = interaction; 
+        userSchema.findById(user.id).then(u => {
+            if (!u) {
+                interaction.reply(embeds.noReminders());
             } else {
-                if (user.reminders.length == 0) channel.send(embeds.noReminders());
-                else channel.send(embeds.remindersList(user.reminders));
+                if (u.reminders.length == 0) interaction.reply(embeds.noReminders());
+                else interaction.reply(embeds.remindersList(u.reminders));
             }
         });
     }

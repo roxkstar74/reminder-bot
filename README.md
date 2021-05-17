@@ -1,39 +1,24 @@
-# ReminderBot
-![Set a reminder for tomorrow so you don't miss this important webinar.](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p1.png)
+# ReminderBot: A lightweight reminder manager for Discord
 
-One day later, out of nowhere:
-
-![A reminder shows up telling you your important note](https://github.com/pblpbl1024/reminder-bot/blob/main/assets/p2.png)
-
-![visitors](https://visitor-badge.glitch.me/badge?page_id=pblpbl1024.reminder-bot)
+## Update v1.1: Slash commands are now out! 
+### Changelog
+* Using the latest version of Discord.js (v13 master branch), ReminderBot now listens to Discord interactions using slash commands. To get info on all the commands and use them, all you need to do is to type `/` in the DM channel.
+* Added the `/clear` command for removing all reminders
+* Adding and removing a reminder will now automatically bring up the list of reminders
+* The `date` parameter is now optional and will now default to the current day of the user
 
 This is a lightweight Discord bot that allows you to set reminders to ping yourself with a direct message at a specified time. Schedule messages easily and manage your reminders by direct messaging the bot with simple commands!
 
 ## Add this bot
-[Click here](https://discord.com/api/oauth2/authorize?client_id=834503689452257322&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
+[Click here](https://discord.com/api/oauth2/authorize?client_id=843908993491533885&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
 
 ## Usage
-**All interactions take place via direct messages**. When you invite the bot to a server, everyone on the server can start using this bot if their DM settings allow it.
+All interactions take place via direct messages. When you invite the bot to a server, everyone on the server can start using this bot if their DM settings allow it.
 
-Before you start using the bot, **you must type `.r set <offset>` where `<offset>` is the number of hours your time zone is offset from Coordinated Universal Time.** [Click here](https://www.timeanddate.com/time/map/) to find your time zone. The offset is the number at the bottom of the map on the highlighted strip when you hover over your location. 
+Before you start using the bot, you must type `/timezone <offset>` where `<offset>` is the number of hours your time zone is offset from Coordinated Universal Time. [Click here](https://www.timeanddate.com/time/map/) to find your time zone. The offset is the number at the bottom of the map on the highlighted strip when you hover over your location. 
 
-To get help for all the commands, type `.r help`. Here's a list of them for convenience:
-* `.r add <hour:minute><am|pm> <month/day/year> <message>`
-
-  Sets a reminder to ping you at a specific time. **The order of `time`, `date`, and `message` does not matter**, but note that `message` cannot contain the character `:` or `/`.
- 
-* `.r list`
-
-  Lists all active reminders with their IDs. Reminders are always sorted by time.
-
-* `.r remove <id|all>`
-
-  Removes an active reminder by its ID as shown when you type `.r list`, or removes all active reminders if you type `.r remove all`.
-  
-* `.r set <offset>`
-
-  Sets your current time zone offset from UTC (in hours). It is strongly recommended that you clear all reminders after changing this offset.
+All other commands can be found by typing `/` and checking the slash commands under the ReminderBot tab.
 
 ## Upcoming Features
 * Support for relative time units when creating a reminder
-* Support for repeating reminders
+* Support for intervals (repeating reminders)

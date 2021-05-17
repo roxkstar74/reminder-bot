@@ -1,9 +1,24 @@
-const Discord = require("discord.js");
+const { Client, Intents } = require("discord.js");
 const fs = require("fs");
 require("dotenv").config();
 const mongoose = require("mongoose");
+const { run } = require("./commands/add");
 const userSchema = require("./models/user");
-const embeds = require("./embeds");
+
+const commandFiles = fs.readdirSync("./commands");
+const commands = [];
+
+//slash commands
+const commandData = {
+    name: 'echo',
+    description: 'Replies with your input!',
+    options: [{
+        name: 'input',
+        type: 'STRING',
+        description: 'The input which should be echoed back',
+        required: true,
+    }],
+};
 
 //initialize connection to mongodb server
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reminder-bot", {
@@ -18,50 +33,35 @@ connection.once("open", () => {
 });
 
 //initialize discord client
-const client = new Discord.Client();
+const myIntents = new Intents();
+myIntents.add('GUILD_PRESENCES', 'GUILD_MEMBERS');
+const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 client.login(process.env.TOKEN);
 client.once("ready", () => {
     console.log("Bot started.");
-    console.log(new Date().getTimezoneOffset());
-    //this fetch function can get any user without relying on cache
-    //client.users.fetch("371785429113896965").then(res => console.log(res));
+    //console.log(new Date().getTimezoneOffset());
+    for (const file of commandFiles) {
+        const command = require(`./commands/${file}`);
+        commands.push(command);
+        //create a dm command (only do this once)
+        client.application.commands.create(command.data);
+        //delete all commands (NOTE: the command state at the time of creation must be identical to the one at deletion)
+        //client.application.commands.create(command.data).then(cmd => client.application.commands.delete(cmd));
+    }
+    //fetches all cmds
+    /*client.application.commands.fetch().then(cmds => {
+        console.log(cmds);
+    });*/
 });
 
-//load all commands into a global variable
-const commandFiles = fs.readdirSync("./commands");
-commands = [];
-for (const file of commandFiles) {
-    const command = require(`./commands/${file}`);
-    commands.push(command);
-}
-
-//console.log(commands);
-
-client.on("message", async message => {
-    const { channel, content, author } = message;
-    if (channel.type !== "dm" || author.bot) return;
-    let prefix = ".r";
-
-    //trim extra space around the edges and reduce middle spaces to one space, then convert it to an array
-    const msg = content.replace(/\s+/g, " ").trim().split(" ");
-    //check if the message starts with the prefix or starts with pinging the bot
-    if (msg[0] !== prefix && msg[0] !== `<@!${client.user.id}>`) return;
-
-    if (msg.length < 2) {
-        channel.send(`Error: Command not specified. Type \`.remind help\` for information on how to use this bot.`); return;
-    }
-
-    //handles commands
-    const cmd = msg[1], args = msg.slice(2);
-    console.log(`${author.username} ran command "${cmd}" with arguments "${args}".`);
-    let found = false;
+//fired when a slash command is used (interaction is a CommandInteraction objec)
+client.on('interaction', async interaction => {
+    // If the interaction isn't a slash command, return
+    if (!interaction.isCommand()) return;
+    // Check if it is the correct command
     for (const command of commands) {
-        if (cmd === command.name || command.aliases.includes(cmd)) {
-            command.run(message, args); found = true;
-            break;
-        }
+        if (interaction.commandName === command.data.name) command.run(interaction); 
     }
-    if (!found) channel.send(embeds.invalidCommand());
 });
 
 var interval = 60000;
