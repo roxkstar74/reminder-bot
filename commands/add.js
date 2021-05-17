@@ -36,7 +36,7 @@ module.exports = {
         const { options, user } = interaction; const args = options.map(option => option.value);
         userSchema.findById(user.id).then(u => {
             if (!u) {
-                channel.send(embeds.error("Use `/timezone` to set your time zone before you can add reminders."));
+                interaction.reply(embeds.error("Use `/timezone` to set your time zone before you can add reminders."));
             } else {
                 //check each argument against these strings to be more accurate
                 const v = args[1].substring(args[1].length - 2).toUpperCase();
@@ -67,10 +67,10 @@ module.exports = {
 
                 let dateValue = 0;
                 if (v === "AM" && time[0] === 12) {
-                    dateValue = new Date(date[2], date[0] - 1, date[1], time[0]-12, time[1]).getTime() - u.offset * 60 * 60 * 1000;
+                    dateValue = new Date(date[2], date[0] - 1, date[1], time[0] - 12, time[1]).getTime() - u.offset * 60 * 60 * 1000;
                 }
                 else if (v === "PM" && time[0] !== 12) {
-                    dateValue = new Date(date[2], date[0] - 1, date[1], time[0]+12, time[1]).getTime() - u.offset * 60 * 60 * 1000;
+                    dateValue = new Date(date[2], date[0] - 1, date[1], time[0] + 12, time[1]).getTime() - u.offset * 60 * 60 * 1000;
                 }
                 //construct reminder object
                 time[1] = pad(time[1], 2);

@@ -8,18 +8,6 @@ const userSchema = require("./models/user");
 const commandFiles = fs.readdirSync("./commands");
 const commands = [];
 
-//slash commands
-const commandData = {
-    name: 'echo',
-    description: 'Replies with your input!',
-    options: [{
-        name: 'input',
-        type: 'STRING',
-        description: 'The input which should be echoed back',
-        required: true,
-    }],
-};
-
 //initialize connection to mongodb server
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reminder-bot", {
     useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true
