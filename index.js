@@ -44,7 +44,7 @@ client.once("ready", () => {
         const command = require(`./commands/${file}`);
         commands.push(command);
         //create a dm command (only do this once)
-        client.application.commands.create(command.data);
+        //client.application.commands.create(command.data);
         //delete all commands (NOTE: the command state at the time of creation must be identical to the one at deletion)
         //client.application.commands.create(command.data).then(cmd => client.application.commands.delete(cmd));
     }
