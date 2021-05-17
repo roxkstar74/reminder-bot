@@ -20,7 +20,7 @@ module.exports = {
         userSchema.findById(user.id).then(u => {
             if (!u) {
                 new userSchema({
-                    _id: u.id,
+                    _id: user.id,
                     reminders: [],
                     offset: offset
                 }).save();
