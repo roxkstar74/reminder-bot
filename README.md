@@ -15,6 +15,7 @@ This is a lightweight Discord bot that allows you to set reminders to ping yours
 ## Usage
 All interactions take place via direct messages. When you invite the bot to a server, everyone on the server can start using this bot if their DM settings allow it.
 
+### Important Note
 Before you start using the bot, you must type `/timezone <offset>` where `<offset>` is the number of hours your time zone is offset from Coordinated Universal Time. [Click here](https://www.timeanddate.com/time/map/) to find your time zone. The offset is the number at the bottom of the map on the highlighted strip when you hover over your location. 
 
 All other commands can be found by typing `/` and checking the slash commands under the ReminderBot tab.
