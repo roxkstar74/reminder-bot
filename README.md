@@ -1,4 +1,4 @@
-# ReminderBot: A lightweight reminder manager for Discord
+# ReminderBot: A lightweight command-based reminder manager for Discord
 
 ## Update v1.1: Slash commands are now out! 
 ### Changelog
