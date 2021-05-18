@@ -6,7 +6,7 @@ const { run } = require("./commands/add");
 const userSchema = require("./models/user");
 
 const commandFiles = fs.readdirSync("./commands");
-const commands = [];
+const commands = [], data = [];
 
 //initialize connection to mongodb server
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reminder-bot", {
@@ -27,28 +27,36 @@ const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_
 client.login(process.env.TOKEN);
 client.once("ready", () => {
     console.log("Bot started.");
-    //console.log(new Date().getTimezoneOffset());
     for (const file of commandFiles) {
         const command = require(`./commands/${file}`);
-        commands.push(command);
-        //create a dm command (only do this once)
-        //client.application.commands.create(command.data);
-        //delete all commands (NOTE: the command state at the time of creation must be identical to the one at deletion)
-        //client.application.commands.create(command.data).then(cmd => client.application.commands.delete(cmd));
+        commands.push(command); data.push(command.data);
     }
-    //fetches all cmds
-    /*client.application.commands.fetch().then(cmds => {
-        console.log(cmds);
-    });*/
+    client.application.commands.set(data);
 });
 
 //fired when a slash command is used (interaction is a CommandInteraction objec)
-client.on('interaction', async interaction => {
+client.on('interaction', interaction => {
     // If the interaction isn't a slash command, return
     if (!interaction.isCommand()) return;
     // Check if it is the correct command
     for (const command of commands) {
-        if (interaction.commandName === command.data.name) command.run(interaction); 
+      if (interaction.commandName === command.data.name) command.run(interaction);
+    }
+});
+
+client.on('message', async message => {
+
+    //fetches the client application if the owner isn't defined
+    if (!client.application.owner) await client.application.fetch();
+    console.log(client.application.owner);
+
+    if (message.content.toLowerCase() === '!deploy' && message.author.id === client.application.owner.id) {
+        for (const file of commandFiles) {
+            const command = require(`./commands/${file}`);
+            commands.push(command); data.push(command.data);
+        }
+        await client.application.commands.create(data);
+        message.channel.send("Created slash commands.");
     }
 });
 
