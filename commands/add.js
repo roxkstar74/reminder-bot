@@ -72,6 +72,7 @@ module.exports = {
                 else if (v === "PM" && time[0] !== 12) {
                     dateValue += 12*60*60*1000; 
                 }
+                console.log("datevalue", dateValue);
                 //construct reminder object
                 time[1] = pad(time[1], 2);
                 const reminder = {
