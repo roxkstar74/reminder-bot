@@ -33,7 +33,7 @@ module.exports = {
         ]
     },
     run(interaction) {
-        const {options, user} = interaction; const args = options.map(option => option.value);
+        const { options, user } = interaction; const args = options.map(option => option.value);
         userSchema.findById(user.id).then(u => {
             if (!u) {
                 interaction.reply(embeds.error("Use `/timezone` to set your time zone before you can add reminders."));
@@ -65,12 +65,12 @@ module.exports = {
                 if (isNaN(date[0]) || date[1] < 1 || date[1] > 31) { interaction.reply(embeds.error("Invalid day. The value must be an integer between `1` and `31`.")); return; }
                 if (isNaN(date[2]) || date[2] < 2000 || date[2] > 2100) { interaction.reply(embeds.error("Invalid year. The value must be an integer between `2000` and `2100`.")); return; }
 
-                let dateValue = 0;
+                let dateValue = new Date(date[2], date[0] - 1, date[1], time[0], time[1]).getTime() - u.offset * 60 * 60 * 1000;
                 if (v === "AM" && time[0] === 12) {
-                    dateValue = new Date(date[2], date[0] - 1, date[1], time[0] - 12, time[1]).getTime() - u.offset * 60 * 60 * 1000;
+                    dateValue -= 12*60*60*1000; 
                 }
                 else if (v === "PM" && time[0] !== 12) {
-                    dateValue = new Date(date[2], date[0] - 1, date[1], time[0] + 12, time[1]).getTime() - u.offset * 60 * 60 * 1000;
+                    dateValue += 12*60*60*1000; 
                 }
                 //construct reminder object
                 time[1] = pad(time[1], 2);

@@ -34,7 +34,7 @@ client.once("ready", () => {
     client.application.commands.set(data);
 });
 
-//fired when a slash command is used (interaction is a CommandInteraction objec)
+//fired when a slash command is used (interaction is a CommandInteraction object)
 client.on('interaction', interaction => {
     // If the interaction isn't a slash command, return
     if (!interaction.isCommand()) return;
