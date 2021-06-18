@@ -2,6 +2,8 @@
 
 This bot allows you to set reminders to ping yourself with a direct message at a specified time. Schedule messages easily and manage your reminders by direct messaging the bot with simple commands!
 
+[Top.gg link](https://top.gg/bot/843908993491533885)
+
 ## Add this bot
 [Click here](https://discord.com/api/oauth2/authorize?client_id=843908993491533885&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
 
