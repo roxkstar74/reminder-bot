@@ -4,6 +4,8 @@ This bot allows you to set reminders to ping yourself with a direct message at a
 
 [Top.gg link](https://top.gg/bot/843908993491533885)
 
+![visitors](https://visitor-badge.glitch.me/badge?page_id=pblpbl1024.reminder-bot)
+
 ## Add this bot
 [Click here](https://discord.com/api/oauth2/authorize?client_id=843908993491533885&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
 
