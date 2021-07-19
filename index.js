@@ -28,8 +28,9 @@ client.once("ready", () => {
         const command = require(`./commands/${file}`);
         commands.push(command); data.push(command.data);
     }
-    console.log(commands);
-    client.application.commands.set(data);
+    //if this doesn't work, run set([]), then set(data) 
+    //alternatively you can delete this line
+    //client.application.commands.set(data);
 });
 
 //fired when a slash command is used (interaction is a CommandInteraction object)
@@ -52,10 +53,6 @@ client.on('message', async message => {
     if (!client.application.owner) await client.application.fetch();
 
     if (message.content.toLowerCase() === '!deploy' && message.author.id === client.application.owner.id) {
-        for (const file of commandFiles) {
-            const command = require(`./commands/${file}`);
-            commands.push(command); data.push(command.data);
-        }
         await client.application.commands.create(data);
         message.channel.send("Created slash commands.");
     }

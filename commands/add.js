@@ -1,12 +1,6 @@
 const userSchema = require("../models/user");
 const embeds = require("../embeds");
 
-function pad(num, size) {
-    num = num.toString();
-    while (num.length < size) num = "0" + num;
-    return num;
-}
-
 module.exports = {
     data: {
         name: "add",
@@ -74,8 +68,6 @@ module.exports = {
                     dateValue += 12*60*60*1000; 
                 }
                 console.log("datevalue", dateValue);
-                //construct reminder object
-                time[1] = pad(time[1], 2);
                 const reminder = {
                     date: dateValue,
                     msg: msg
@@ -91,6 +83,7 @@ module.exports = {
                         [u.reminders[i], u.reminders[i + 1]], [u.reminders[i + 1], u.reminders[i]];
                 }
                 u.save();
+                console.log(u.reminders);
                 interaction.reply(embeds.remindersList(u.reminders, u.offset));
             }
         });

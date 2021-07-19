@@ -44,15 +44,25 @@ exports.remindersList = (reminders, offset) => {
     if(reminders.length === 0) embed.setDescription("There are no active reminders.");
     else reminders.forEach((reminder, idx) => {
       
-        embed.addField("Date <month/day/year>", reminder.date, true);
+        embed.addField("Date", dateStr(reminder.date+offset*60*60*1000), true);
         embed.addField("Message", `${reminder.msg}`, true);
         embed.addField("ID", idx, true);
     });
     return embed;
 };
-
 //takes in any date and shows the datestring in utc
-function dateStr(d) {
-  return d;
-  //return `${date.getHours()}:${date.getMinutes()} ${date.getMonth()}/${date.getDate()}`
+
+const dateStr = (d) => {
+  var date = new Date(d);
+  var h = date.getHours(), v = "AM";
+  if(h >= 12) v = "PM";
+  if(h > 12) h -= 12;
+  if(h == 0) h += 12;
+  return `${h}:${pad(date.getMinutes(), 2)} ${v} ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+}
+
+const pad = (num, size) => {
+    num = num.toString();
+    while (num.length < size) num = "0" + num;
+    return num;
 }
