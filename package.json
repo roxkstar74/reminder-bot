@@ -12,7 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "github:discordjs/discord.js#ab82cafcde0ee259a32ef14303c1b4a64dea8fae",
-    "dotenv": "^10.0.0",
-    "mongoose": "^5.12.5"
+    "mongoose": "^5.13.3",
+    "node": "^14.17.3",
+    "npm": "^7.20.0"
   }
 }

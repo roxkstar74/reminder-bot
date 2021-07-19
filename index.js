@@ -1,6 +1,5 @@
 const { Client, Intents } = require("discord.js");
 const fs = require("fs");
-require("dotenv").config();
 const mongoose = require("mongoose");
 const userSchema = require("./models/user");
 const commandFiles = fs.readdirSync("./commands");
@@ -46,7 +45,6 @@ client.on('message', async message => {
 
     //fetches the client application if the owner isn't defined
     if (!client.application.owner) await client.application.fetch();
-    console.log(client.application.owner);
 
     if (message.content.toLowerCase() === '!deploy' && message.author.id === client.application.owner.id) {
         for (const file of commandFiles) {
