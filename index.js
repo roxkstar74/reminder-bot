@@ -1,8 +1,6 @@
 const { Client, Intents } = require("discord.js");
 const fs = require("fs");
-require("dotenv").config();
 const mongoose = require("mongoose");
-const { run } = require("./commands/add");
 const userSchema = require("./models/user");
 
 const commandFiles = fs.readdirSync("./commands");

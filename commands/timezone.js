@@ -14,7 +14,6 @@ module.exports = {
     },
     run(interaction) {
         const {options, user} = interaction; const args = options.map(option => option.value);
-        if (options.length !== 1) { channel.send(embeds.error("Invalid number of arguments.")); return; }
         const offset = parseInt(args[0]);
         if (isNaN(offset) || offset < -11 || offset > 14) { interaction.reply(embeds.error("Invalid offset. The value must be an integer between `-11` and `14`.")); return; }
         userSchema.findById(user.id).then(u => {
