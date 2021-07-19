@@ -38,13 +38,21 @@ exports.updateOffset = (offset) => {
         .setDescription(`Your time zone is now \`${offset}\` hours from UTC.`);
 };
 
-exports.remindersList = (reminders) => {
+exports.remindersList = (reminders, offset) => {
+
     const embed = new Discord.MessageEmbed().setColor(blue).setTitle("Reminders List");
     if(reminders.length === 0) embed.setDescription("There are no active reminders.");
     else reminders.forEach((reminder, idx) => {
-        embed.addField("Date", reminder.dateStr, true);
+      
+        embed.addField("Date <month/day/year>", reminder.date, true);
         embed.addField("Message", `${reminder.msg}`, true);
         embed.addField("ID", idx, true);
     });
     return embed;
 };
+
+//takes in any date and shows the datestring in utc
+function dateStr(d) {
+  return d;
+  //return `${date.getHours()}:${date.getMinutes()} ${date.getMonth()}/${date.getDate()}`
+}

@@ -65,6 +65,7 @@ module.exports = {
                 if (isNaN(date[0]) || date[1] < 1 || date[1] > 31) { interaction.reply(embeds.error("Invalid day. The value must be an integer between `1` and `31`.")); return; }
                 if (isNaN(date[2]) || date[2] < 2000 || date[2] > 2100) { interaction.reply(embeds.error("Invalid year. The value must be an integer between `2000` and `2100`.")); return; }
 
+                //local user time to utc: -offset
                 let dateValue = new Date(date[2], date[0] - 1, date[1], time[0], time[1]).getTime() - u.offset * 60 * 60 * 1000;
                 if (v === "AM" && time[0] === 12) {
                     dateValue -= 12*60*60*1000; 
@@ -76,9 +77,7 @@ module.exports = {
                 //construct reminder object
                 time[1] = pad(time[1], 2);
                 const reminder = {
-                    //local user time to system time: -offset
                     date: dateValue,
-                    dateStr: [time.join(":"), v, date.join("/")].join(" "),
                     msg: msg
                 };
 
@@ -92,7 +91,7 @@ module.exports = {
                         [u.reminders[i], u.reminders[i + 1]], [u.reminders[i + 1], u.reminders[i]];
                 }
                 u.save();
-                interaction.reply(embeds.remindersList(u.reminders));
+                interaction.reply(embeds.remindersList(u.reminders, u.offset));
             }
         });
     }

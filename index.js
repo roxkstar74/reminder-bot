@@ -28,6 +28,7 @@ client.once("ready", () => {
         const command = require(`./commands/${file}`);
         commands.push(command); data.push(command.data);
     }
+    console.log(commands);
     client.application.commands.set(data);
 });
 
@@ -37,7 +38,11 @@ client.on('interaction', interaction => {
     if (!interaction.isCommand()) return;
     // Check if it is the correct command
     for (const command of commands) {
-        if (interaction.commandName === command.data.name) command.run(interaction);
+        if (interaction.commandName === command.data.name) 
+        {
+          console.log(`${interaction.user.username} ran command ${command.data.name}.`);
+          command.run(interaction);
+        }
     }
 });
 
