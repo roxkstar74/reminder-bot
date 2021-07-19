@@ -1,8 +1,8 @@
 const { Client, Intents } = require("discord.js");
 const fs = require("fs");
+require("dotenv").config();
 const mongoose = require("mongoose");
 const userSchema = require("./models/user");
-
 const commandFiles = fs.readdirSync("./commands");
 const commands = [], data = [];
 
@@ -38,7 +38,7 @@ client.on('interaction', interaction => {
     if (!interaction.isCommand()) return;
     // Check if it is the correct command
     for (const command of commands) {
-      if (interaction.commandName === command.data.name) command.run(interaction);
+        if (interaction.commandName === command.data.name) command.run(interaction);
     }
 });
 
@@ -61,7 +61,6 @@ client.on('message', async message => {
 var interval = 60000;
 var delay = (60 - new Date().getSeconds()) * 1000;
 var expected = Date.now() + delay;
-var count = 0;
 setTimeout(step, delay);
 function step() {
     var dt = Date.now() - expected; // the drift (positive for overshooting, negative for undershooting)
@@ -72,7 +71,6 @@ function step() {
         //do what is to be done normally
         //console.log(dt);
         //query all users and check if there are any reminders that should go off
-        count++; if (count % 60 == 0) console.log("hi");
         const now = new Date();
         userSchema.find().then(userList => {
             //loop through all user entries
