@@ -9,6 +9,10 @@ This bot allows you to set reminders to ping yourself with a direct message at a
 ## Add this bot
 [Click here](https://discord.com/api/oauth2/authorize?client_id=843908993491533885&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
 
+### Tech Stack
+* Bot functionality: Discord.js
+* Database functionality: MongoDB
+
 ## Usage
 **All interactions take place via direct messages**. When you invite the bot to a server, everyone on the server can start using this bot if their DM settings allow it. Type `/` to view all commands and info on how to use them.
 
