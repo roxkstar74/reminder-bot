@@ -18,6 +18,13 @@ This bot allows you to set reminders to ping yourself with a direct message at a
 
 `/add` Adds a reminder by specifying a time, date, and message.
 
+Arguments:
+* `message` The message to notify you with.
+
+* `time: <hour:minute><am|pm>` The time to send the notification.
+
+* `date: <month/day/year>` The date to send the notification. Leave this blank to default to the current day, or leave `year` blank to default to the current year.
+
 `/remove <id>` Removes a specific reminder in the list by ID.
 
 `/clear` Removes all reminders.
