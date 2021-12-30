@@ -12,7 +12,14 @@ This bot allows you to set reminders to ping yourself with a direct message at a
 ## Add this bot
 [Click here](https://discord.com/api/oauth2/authorize?client_id=843908993491533885&permissions=0&scope=bot) to invite the bot to your server, no permissions required.
 
-### Tech Stack
+### Run this bot locally
+Run the following commands in a terminal:
+`git clone https://github.com/pblpbl1024/reminder-bot.git`
+`cd reminder-bot`
+`npm install`
+`npm start`
+
+## Tech Stack
 * Bot functionality: Discord.js
 * Database functionality: MongoDB
 
