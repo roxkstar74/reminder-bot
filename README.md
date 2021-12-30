@@ -14,9 +14,13 @@ This bot allows you to set reminders to ping yourself with a direct message at a
 
 ### Run this bot locally
 Run the following commands in a terminal:
+
 `git clone https://github.com/pblpbl1024/reminder-bot.git`
+
 `cd reminder-bot`
+
 `npm install`
+
 `npm start`
 
 ## Tech Stack
