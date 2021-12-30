@@ -2,6 +2,9 @@
 
 This bot allows you to set reminders to ping yourself with a direct message at a specified time. Schedule messages easily and manage your reminders by direct messaging the bot with simple commands!
 
+![image](https://user-images.githubusercontent.com/17630457/147714394-d4ae8343-da59-4810-9edd-b1e1dad43b58.png)
+
+
 [Top.gg link](https://top.gg/bot/843908993491533885)
 
 ![visitors](https://visitor-badge.glitch.me/badge?page_id=pblpbl1024.reminder-bot)
