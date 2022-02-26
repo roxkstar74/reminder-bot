@@ -1,5 +1,7 @@
 const userSchema = require("../models/user");
 const embeds = require("../embeds");
+// require('any-date-parser');
+
 
 module.exports = {
     data: {
@@ -35,6 +37,7 @@ module.exports = {
                 //check each argument against these strings to be more accurate
                 const v = args[1].substring(args[1].length - 2).toUpperCase();
                 const time = args[1].substring(0, args[1].length - 2).split(":");
+                // console.log(Date.fromAny(args[1]));
                 if (time.length !== 2 || (v !== "AM" && v !== "PM")) { interaction.reply(embeds.error("Invalid time format. The required format is `<hour>:<minute><am|pm>`.")); return; }
 
                 //convert currentTime to local user time: +offset
@@ -42,6 +45,7 @@ module.exports = {
                 userNow.setTime(userNow.getTime() + u.offset * 60 * 60 * 1000);
                 let date = [userNow.getMonth() + 1, userNow.getDate(), userNow.getFullYear()];
                 console.log(date);
+                // console.log(Date.fromAny(args[2]));
                 if (options.length == 3) {
                     date = args[2].split("/");
                     if (date.length == 2) { date[2] = userNow.getFullYear(); }

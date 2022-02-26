@@ -2,6 +2,8 @@ const Discord = require("discord.js");
 const blue = "#06B6D4";
 const red = "#EF4444";
 const green = "#22C55E";
+const { format, render, cancel, register } = require('timeago.js');
+
 
 exports.help = (commands) => {
     const embed = new Discord.MessageEmbed().setTitle("Commands List").setColor(blue);
@@ -44,7 +46,7 @@ exports.remindersList = (reminders, offset) => {
     if(reminders.length === 0) embed.setDescription("There are no active reminders.");
     else reminders.forEach((reminder, idx) => {
       
-        embed.addField("Date", dateStr(reminder.date+offset*60*60*1000), true);
+        embed.addField("Date", dateStr(reminder.date), true);
         embed.addField("Message", `${reminder.msg}`, true);
         embed.addField("ID", idx, true);
     });
@@ -58,7 +60,7 @@ const dateStr = (d) => {
   if(h >= 12) v = "PM";
   if(h > 12) h -= 12;
   if(h == 0) h += 12;
-  return `${h}:${pad(date.getMinutes(), 2)} ${v} ${date.getMonth()+1}/${date.getDate()}/${date.getFullYear()}`;
+  return format(d);
 }
 
 const pad = (num, size) => {

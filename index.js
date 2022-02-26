@@ -4,6 +4,10 @@ const mongoose = require("mongoose");
 const userSchema = require("./models/user");
 const commandFiles = fs.readdirSync("./commands");
 const commands = [], data = [];
+const dotenv = require("dotenv");
+dotenv.config();
+const { format, render, cancel, register } = require('timeago.js');
+
 
 //initialize connection to mongodb server
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reminder-bot", {
@@ -30,7 +34,7 @@ client.once("ready", () => {
     }
     //if this doesn't work, run set([]), then set(data) 
     //alternatively you can delete this line
-    //client.application.commands.set(data);
+    client.application.commands.set(data);
 });
 
 //fired when a slash command is used (interaction is a CommandInteraction object)
@@ -77,9 +81,11 @@ function step() {
             for (const user of userList) {
                 //console.log(user);
                 for (let i = 0; i < user.reminders.length; i++) {
+                    console.log(`Checking date: ${format(user.reminders[i].date)} vs ${now.getTime()}`)
                     if (user.reminders[i].date <= now.getTime()) {
                         //ping the user with the reminder, delete this reminder, and update the index
                         //since this function is asynchronous, store the message in a variable
+                        console.log(`Sending DM for date: ${user.reminders[i].date}`)
                         let m = user.reminders[i].msg;
                         client.users.fetch(user._id).then(u => {
                             u.send(`<@${u.id}> ${m}`);
