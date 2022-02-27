@@ -44,10 +44,10 @@ exports.remindersList = (reminders, offset) => {
 
     const embed = new Discord.MessageEmbed().setColor(blue).setTitle("Reminders List");
     if(reminders.length === 0) embed.setDescription("There are no active reminders.");
-    else reminders.forEach((reminder, idx) => {
+    else reminders.filter(reminder => !reminder.hidden).forEach((reminder, idx) => {
       
-        embed.addField("Date", dateStr(reminder.date), true);
-        embed.addField("Message", `${reminder.msg}`, true);
+        embed.addField("When?", dateStr(reminder.date), true);
+        embed.addField("Reminder", `${reminder.msg}`, true);
         embed.addField("ID", idx, true);
     });
     return embed;

@@ -77,11 +77,18 @@ module.exports = {
                     msg: msg
                 };
 
+                const reminderOneHourAlert = {
+                    date: dateValue - 60*60*1000,
+                    msg: `${msg } - in one hour!`,
+                    hidden: true,
+                }
+
                 if (reminder.date <= new Date().getTime()) { interaction.reply(embeds.error("The time for this reminder has already passed.")); return; }
 
                 //update the database
                 //push it into the array, then sort it by inserting it in place
                 u.reminders.push(reminder);
+                u.reminders.push(reminderOneHourAlert);
                 for (let i = u.reminders.length - 2; i >= 0; i--) {
                     if (u.reminders[i].date > u.reminders[i + 1].date)
                         [u.reminders[i], u.reminders[i + 1]], [u.reminders[i + 1], u.reminders[i]];
