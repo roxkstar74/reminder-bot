@@ -30,6 +30,7 @@ module.exports = {
     },
     run(interaction) {
         const { options, user } = interaction; const args = options.map(option => option.value);
+        console.log('origin channel: ', interaction.channel);
         userSchema.findById(user.id).then(u => {
             if (!u) {
                 interaction.reply(embeds.error("Use `/timezone` to set your time zone before you can add reminders."));
