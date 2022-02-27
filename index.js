@@ -88,7 +88,12 @@ function step() {
                         console.log(`Sending DM for date: ${user.reminders[i].date}`)
                         let m = user.reminders[i].msg;
                         client.users.fetch(user._id).then(u => {
-                            u.send(`<@${u.id}> ${m}`);
+                            if(user.reminders[i].channel) {
+                                client.channels.get(user.reminders[i].channel).send(`<@${u.id}> ${m}`);
+                            }
+                            else {
+                                u.send(`<@${u.id}> ${m}`);
+                            }
                             console.log(u.username + " was sent the reminder \"" + m + "\"");
                         });
                         user.reminders.splice(i, 1); i--;

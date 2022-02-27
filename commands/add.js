@@ -30,7 +30,7 @@ module.exports = {
     },
     run(interaction) {
         const { options, user } = interaction; const args = options.map(option => option.value);
-        console.log('origin channel: ', interaction.channel);
+        console.log('origin channel: ', interaction?.channel?.id);
         userSchema.findById(user.id).then(u => {
             if (!u) {
                 interaction.reply(embeds.error("Use `/timezone` to set your time zone before you can add reminders."));
@@ -75,13 +75,15 @@ module.exports = {
                 console.log("datevalue", dateValue);
                 const reminder = {
                     date: dateValue,
-                    msg: msg
+                    msg: msg,
+                    channel: interaction?.channel?.id,
                 };
 
                 const reminderOneHourAlert = {
                     date: dateValue - 60*60*1000,
                     msg: `${msg } - in one hour!`,
                     hidden: true,
+                    channel: interaction?.channel?.id,
                 }
 
                 if (reminder.date <= new Date().getTime()) { interaction.reply(embeds.error("The time for this reminder has already passed.")); return; }
