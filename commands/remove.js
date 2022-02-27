@@ -21,7 +21,12 @@ module.exports = {
             if (!u || isNaN(idx) || idx < 0 || idx >= u.reminders.length) {
                 interaction.reply(embeds.error("Invalid id. The id should be an integer obtained from the `list` command."));
             } else {
-                u.reminders.splice(idx, 2);
+                if(u.reminders.length > idx + 1 && u.reminders[idx + 1].msg === u.reminders[idx].msg + ' - in one hour!') {
+                    u.reminders.splice(idx, 2);
+                }
+                else {
+                    u.reminders.splice(idx, 1);
+                }
                 u.save();
                 interaction.reply(embeds.remindersList(u.reminders, u.offset));
             }
