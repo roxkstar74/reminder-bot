@@ -89,7 +89,7 @@ function step() {
                         let m = user.reminders[i].msg;
                         client.users.fetch(user._id).then(u => {
                             if(user.reminders[i].channel) {
-                                client.channels.get(user.reminders[i].channel).send(`<@${u.id}> ${m}`);
+                                client.channels.cache.get(user.reminders[i].channel).send(`<@${u.id}> ${m}`);
                             }
                             else {
                                 u.send(`<@${u.id}> ${m}`);
